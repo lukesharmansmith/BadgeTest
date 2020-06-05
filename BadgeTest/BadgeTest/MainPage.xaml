@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:badgetest="clr-namespace:BadgeTest"
+             mc:Ignorable="d"
+             x:Class="BadgeTest.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <badgetest:Badge WidthRequest="{Binding Source={x:Reference sliderValue}, Path=Value}" 
+                         HeightRequest="{Binding Source={x:Reference sliderValue}, Path=Value}" 
+                         Number="{Binding Source={x:Reference numberSliderValue}, Path=Value}" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <Grid Grid.Row="1" BackgroundColor="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Slider Grid.Column="0" x:Name="sliderValue" Minimum="0"  Value="75" Maximum="360" Margin="25,0" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Text="{Binding Source={x:Reference sliderValue}, Path=Value}" VerticalOptions="Center" TextColor="White"/>
+
+            <Slider Grid.Row="1" Grid.Column="0" x:Name="numberSliderValue" Minimum="0"  Value="15" Maximum="999" Margin="25,0" VerticalOptions="Center"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference numberSliderValue}, Path=Value}" VerticalOptions="Center" TextColor="White"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
